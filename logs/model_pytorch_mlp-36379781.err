@@ -1,0 +1,35 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1008.arc-ts.umich.edu
+Date:        2025-11-19T19:14:02-05:00
+SLURM_JOBID: 36379781
+Working directory: /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+/var/spool/slurmd.spool/job36379781/slurm_script: line 97: 139873 Aborted                 (core dumped) python -c "import sys; import papermill; import ipykernel; import torch; import polars; import sklearn; print('✓ Basic packages available', flush=True)" 2> /dev/null
+⚠ WARNING: Could not verify all packages
+Installing Jupyter kernel: model_pytorch_mlp-36379781...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_pytorch_mlp_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_pytorch_mlp_executed_20251119-191454.ipynb
+Notebook: src/notebooks/model_pytorch_mlp_all_features.ipynb
+Kernel: model_pytorch_mlp-36379781
+✓ Notebook execution completed in 782s
+Checking for output files...
+✓ Found submission file: submission_model_pytorch_mlp.csv
+✓ Found saved model: model_pytorch_mlp_all_features_best.pkl
+✓ Found execution log: model_pytorch_mlp_all_features_run.log
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 782s
+============================================================

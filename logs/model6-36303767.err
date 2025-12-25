@@ -1,0 +1,26 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1000.arc-ts.umich.edu
+Date:        2025-11-19T00:51:09-05:00
+SLURM_JOBID: 36303767
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: model6-36303767...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model6_lightgbm_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model6_executed_20251119-005234.ipynb
+Notebook: src/notebooks/model6_lightgbm_all_features.ipynb
+Kernel: model6-36303767
+✗ ERROR: Papermill failed after 225s!
+Check log file: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/model6_lightgbm_all_features_run.log
+slurmstepd: error: Detected 1 oom_kill event in StepId=36303767.batch. Some of the step tasks have been OOM Killed.

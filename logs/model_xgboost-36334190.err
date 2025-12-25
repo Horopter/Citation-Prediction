@@ -1,0 +1,34 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1001.arc-ts.umich.edu
+Date:        2025-11-19T08:32:49-05:00
+SLURM_JOBID: 36334190
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: model_xgboost-36334190...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_xgboost_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_xgboost_executed_20251119-083318.ipynb
+Notebook: src/notebooks/model_xgboost_all_features.ipynb
+Kernel: model_xgboost-36334190
+✓ Notebook execution completed in 4211s
+Checking for output files...
+✓ Found submission file: submission_model_xgboost.csv
+✓ Found saved model: model_xgboost_all_features_best.pkl
+✓ Found execution log: model_xgboost_all_features_run.log
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 4211s
+============================================================

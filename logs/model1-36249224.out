@@ -1,0 +1,37 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1010.arc-ts.umich.edu
+Date:        2025-11-18T13:24:03-05:00
+SLURM_JOBID: 36249224
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: model1-36249224...
+Installed kernelspec model1-36249224 in /home/santoshd/.local/share/jupyter/kernels/model1-36249224
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model1_regular_no_embeddings.ipynb
+✅ Pre-flight validation passed!
+=== Killing Previous Notebook Instances ===
+✓ Cleanup attempted
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model1_executed_20251118-132433.ipynb
+Input Notebook:  src/notebooks/model1_regular_no_embeddings.ipynb
+Output Notebook: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model1_executed_20251118-132433.ipynb
+Executing:   0%|          | 0/14 [00:00<?, ?cell/s]Executing notebook with kernel: model1-36249224
+Executing:   7%|▋         | 1/14 [00:03<00:45,  3.49s/cell]Executing:  21%|██▏       | 3/14 [01:56<07:51, 42.85s/cell]Executing:  36%|███▌      | 5/14 [04:27<08:55, 59.51s/cell]Executing:  43%|████▎     | 6/14 [23:23<46:30, 348.80s/cell]Executing:  57%|█████▋    | 8/14 [23:24<19:45, 197.53s/cell]Executing:  64%|██████▍   | 9/14 [1:00:38<56:38, 679.61s/cell]Executing:  79%|███████▊  | 11/14 [1:00:40<20:17, 405.71s/cell]Executing:  93%|█████████▎| 13/14 [1:01:19<04:24, 264.65s/cell]Executing: 100%|██████████| 14/14 [1:01:24<00:00, 263.15s/cell]
+✓ Notebook execution completed in 3689s
+Checking for submission file...
+✓ Found submission file: submission_model1.csv
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 3689s
+============================================================
+Removed /home/santoshd/.local/share/jupyter/kernels/model1-36249224

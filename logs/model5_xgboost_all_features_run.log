@@ -1,0 +1,4 @@
+Usage: papermill [OPTIONS] NOTEBOOK_PATH [OUTPUT_PATH]
+Try 'papermill -h' for help.
+
+Error: No such option: --kernel-name Did you mean --kernel?

@@ -1,0 +1,27 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1013.arc-ts.umich.edu
+Date:        2025-11-18T19:01:50-05:00
+SLURM_JOBID: 36275035
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: model5-36275035...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model5_xgboost_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Killing Previous Notebook Instances ===
+✓ Cleanup attempted
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model5_executed_20251118-190222.ipynb
+slurmstepd: error: *** JOB 36275035 ON gl1013 CANCELLED AT 2025-11-18T19:16:58 ***
+/var/spool/slurmd.spool/job36275035/slurm_script: line 1: 3104900 Terminated              papermill "${NOTEBOOK_IN}" "${NOTEBOOK_OUT}" -k "${KNAME}" 2>&1
+     3104901                       | grep -v "UserWarning:"
+     3104902                       | grep -v "DeprecationWarning:"
+     3104903                       | grep -v "FutureWarning:"
+     3104904                       | tee "$WORK_DIR/logs/notebook_execution.log"

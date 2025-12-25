@@ -1,0 +1,80 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1001.arc-ts.umich.edu
+Date:        2025-11-17T21:33:21-05:00
+SLURM_JOBID: 36185490
+CUDA_HOME:   /sw/pkgs/arc/cuda/12.1.1
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+
+=== GPU Information ===
+Mon Nov 17 21:33:21 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:3B:00.0 Off |                  Off |
+| N/A   32C    P0             26W /  250W |       1MiB /  16384MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+==========================================
+
+=== Verifying environment ===
+Verifying Python environment...
+✓ Python environment verified
+Downloading spaCy model (if needed, max 5 minutes)...
+/var/spool/slurmd.spool/job36185490/slurm_script: line 139: 2986782 Aborted                 timeout 300 python -m spacy download en_core_web_sm 2>&1
+     2986783 Done                    | head -20
+⚠ spaCy model download failed or timed out (will skip NER features)
+   This is not critical - NER features are optional
+Installing Jupyter kernel: data-explore-36185490...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found data files in data/processed/ directory
+✓ Notebook found: src/notebooks/data_exploration_organized.ipynb
+✓ Models directory found (optional)
+✅ Pre-flight validation passed!
+
+Resource monitoring started (PID: 2987324)
+Monitor log: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/resource_monitor.log
+
+=== Killing Previous Notebook Instances ===
+
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_executed_20251117-213535.ipynb
+✓ Notebook execution completed in 27862s
+Done. Output: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_executed_20251117-213535.ipynb
+/var/spool/slurmd.spool/job36185490/slurm_script: line 43: 2987324 Terminated              ( while true; do
+    echo "$(date -Is) | RAM: $(free -h 2>/dev/null | awk '/^Mem:/ {print $3 "/" $2}' || echo "N/A") | GPU: $(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits 2>/dev/null | awk '{print $1"/"$2"MB"}' || echo "N/A")" >> "$MONITOR_LOG"; sleep 60;
+done )
+Checking for result files...
+✓ Found: data/results/X_train.parquet
+✓ Found: data/results/X_val.parquet
+✓ Found: data/results/y_train.npy
+✓ Found: data/results/y_val.npy
+✓ Found embedding: data/results/scibert_X_train.parquet
+✓ Found embedding: data/results/sent_transformer_X_train.parquet
+✓ Found embedding: data/results/specter2_X_train.parquet
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 27862s
+Core result files found: 4/4
+Embedding files found: 3/4
+Metrics files generated: 1
+✓ No error files found
+Log files generated: 2
+============================================================

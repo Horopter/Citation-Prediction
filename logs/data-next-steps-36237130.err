@@ -1,0 +1,70 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1005.arc-ts.umich.edu
+Date:        2025-11-18T10:58:24-05:00
+SLURM_JOBID: 36237130
+CUDA_HOME:   /sw/pkgs/arc/cuda/12.1.1
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+
+=== GPU Information ===
+Tue Nov 18 10:58:25 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:D8:00.0 Off |                    0 |
+| N/A   50C    P0             31W /  250W |       1MiB /  16384MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+==========================================
+
+=== Verifying environment ===
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: data-next-steps-36237130...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found base features: X_train.parquet
+✓ Found embedding: sent_transformer
+✓ Found embedding: scibert
+✓ Found embedding: specter2
+✓ Notebook found: src/notebooks/data_exploration_next_steps.ipynb
+✅ Pre-flight validation passed!
+
+Resource monitoring started (PID: 3152307)
+Monitor log: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/resource_monitor.log
+
+=== Killing Previous Notebook Instances ===
+
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-105917.ipynb
+✓ Notebook execution completed in 1700s
+Done. Output: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-105917.ipynb
+/var/spool/slurmd.spool/job36237130/slurm_script: line 43: 3152307 Terminated              ( while true; do
+    echo "$(date -Is) | RAM: $(free -h 2>/dev/null | awk '/^Mem:/ {print $3 "/" $2}' || echo "N/A") | GPU: $(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits 2>/dev/null | awk '{print $1"/"$2"MB"}' || echo "N/A")" >> "$MONITOR_LOG"; sleep 60;
+done )
+Checking for result files...
+✓ Found: data/model_ready/train_model_ready.parquet
+✓ Found: data/model_ready/val_model_ready.parquet
+✓ Found: data/model_ready/test_model_ready.parquet
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 1700s
+Model-ready files found: 3/3
+Log files generated: 2
+============================================================

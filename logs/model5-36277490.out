@@ -1,0 +1,24 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1009.arc-ts.umich.edu
+Date:        2025-11-18T19:28:00-05:00
+SLURM_JOBID: 36277490
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: model5-36277490...
+Installed kernelspec model5-36277490 in /home/santoshd/.local/share/jupyter/kernels/model5-36277490
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model5_xgboost_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Killing Previous Notebook Instances ===
+✓ Cleanup attempted
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model5_executed_20251118-192845.ipynb
+Removed /home/santoshd/.local/share/jupyter/kernels/model5-36277490

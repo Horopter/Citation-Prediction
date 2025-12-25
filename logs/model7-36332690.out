@@ -1,0 +1,32 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1008.arc-ts.umich.edu
+Date:        2025-11-19T05:36:31-05:00
+SLURM_JOBID: 36332690
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: model7-36332690...
+Installed kernelspec model7-36332690 in /home/santoshd/.local/share/jupyter/kernels/model7-36332690
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_catboost_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model7_executed_20251119-053649.ipynb
+Notebook: src/notebooks/model_catboost_all_features.ipynb
+Kernel: model7-36332690
+Usage: papermill [OPTIONS] NOTEBOOK_PATH [OUTPUT_PATH]
+Try 'papermill -h' for help.
+
+Error: No such option: --kernel-name Did you mean --kernel?
+✗ ERROR: Papermill failed after 4s!
+Check log file: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/model7_catboost_all_features_run.log
+Removed /home/santoshd/.local/share/jupyter/kernels/model7-36332690

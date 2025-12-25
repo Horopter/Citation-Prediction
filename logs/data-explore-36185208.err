@@ -1,0 +1,57 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1008.arc-ts.umich.edu
+Date:        2025-11-17T21:16:39-05:00
+SLURM_JOBID: 36185208
+CUDA_HOME:   /sw/pkgs/arc/cuda/12.1.1
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+
+=== GPU Information ===
+Mon Nov 17 21:16:39 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:3B:00.0 Off |                    0 |
+| N/A   44C    P0             26W /  250W |       1MiB /  16384MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+==========================================
+
+=== Verifying environment ===
+Verifying Python environment...
+✓ Python environment verified
+Downloading spaCy model (if needed, max 5 minutes)...
+/var/spool/slurmd.spool/job36185208/slurm_script: line 139: 3378155 Aborted                 timeout 300 python -m spacy download en_core_web_sm 2>&1
+     3378156 Done                    | head -20
+⚠ spaCy model download failed or timed out (will skip NER features)
+   This is not critical - NER features are optional
+Installing Jupyter kernel: data-explore-36185208...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found data files in data/processed/ directory
+✓ Notebook found: src/notebooks/data_exploration_organized.ipynb
+✓ Models directory found (optional)
+✅ Pre-flight validation passed!
+
+Resource monitoring started (PID: 3379481)
+Monitor log: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/resource_monitor.log
+
+=== Killing Previous Notebook Instances ===
+
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_executed_20251117-211838.ipynb
+slurmstepd: error: *** JOB 36185208 ON gl1008 CANCELLED AT 2025-11-17T21:26:22 ***

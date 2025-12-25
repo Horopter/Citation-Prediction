@@ -1,0 +1,95 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1005.arc-ts.umich.edu
+Date:        2025-11-18T10:58:24-05:00
+SLURM_JOBID: 36237130
+CUDA_HOME:   /sw/pkgs/arc/cuda/12.1.1
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+
+=== GPU Information ===
+Tue Nov 18 10:58:25 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:D8:00.0 Off |                    0 |
+| N/A   50C    P0             31W /  250W |       1MiB /  16384MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+==========================================
+
+=== Verifying environment ===
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: data-next-steps-36237130...
+Installed kernelspec data-next-steps-36237130 in /home/santoshd/.local/share/jupyter/kernels/data-next-steps-36237130
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found base features: X_train.parquet
+✓ Found embedding: sent_transformer
+✓ Found embedding: scibert
+✓ Found embedding: specter2
+✓ Notebook found: src/notebooks/data_exploration_next_steps.ipynb
+✅ Pre-flight validation passed!
+
+Resource monitoring started (PID: 3152307)
+Monitor log: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/resource_monitor.log
+
+=== Killing Previous Notebook Instances ===
+=== Killing Previous Notebook Instances ===
+
+1. Checking for papermill processes...
+  ✓ No papermill processes found
+
+2. Checking for jupyter notebook processes...
+  ✓ No jupyter notebook processes found
+
+3. Checking for jupyter lab processes...
+  ✓ No jupyter lab processes found
+
+4. Checking for ipykernel processes...
+  ✓ No ipykernel processes found
+
+5. Checking for Python processes running notebooks...
+  ✓ No Python notebook processes found
+
+6. Cleaning up stale kernel connections...
+
+✓ No previous notebook instances found - ready for clean execution
+
+=== Cleanup Complete ===
+
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-105917.ipynb
+Input Notebook:  src/notebooks/data_exploration_next_steps.ipynb
+Output Notebook: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-105917.ipynb
+Executing:   0%|          | 0/18 [00:00<?, ?cell/s]Executing notebook with kernel: data-next-steps-36237130
+Executing:   6%|▌         | 1/18 [00:03<01:06,  3.90s/cell]Executing:  17%|█▋        | 3/18 [02:04<11:26, 45.75s/cell]Executing:  28%|██▊       | 5/18 [02:28<06:09, 28.45s/cell]Executing:  39%|███▉      | 7/18 [07:02<13:37, 74.35s/cell]Executing:  50%|█████     | 9/18 [07:15<07:19, 48.83s/cell]Executing:  61%|██████    | 11/18 [07:33<04:04, 34.90s/cell]Executing:  72%|███████▏  | 13/18 [24:15<15:51, 190.22s/cell]Executing:  83%|████████▎ | 15/18 [24:15<06:26, 128.91s/cell]Executing:  94%|█████████▍| 17/18 [28:08<02:04, 124.99s/cell]Executing: 100%|██████████| 18/18 [28:14<00:00, 94.15s/cell] 
+✓ Notebook execution completed in 1700s
+Done. Output: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-105917.ipynb
+Checking for result files...
+✓ Found: data/model_ready/train_model_ready.parquet
+✓ Found: data/model_ready/val_model_ready.parquet
+✓ Found: data/model_ready/test_model_ready.parquet
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 1700s
+Model-ready files found: 3/3
+Log files generated: 2
+============================================================

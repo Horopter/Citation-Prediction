@@ -1,0 +1,120 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1008.arc-ts.umich.edu
+Date:        2025-11-19T01:16:09-05:00
+SLURM_JOBID: 36305357
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: model6-36305357...
+Installed kernelspec model6-36305357 in /home/santoshd/.local/share/jupyter/kernels/model6-36305357
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model6_lightgbm_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model6_executed_20251119-011645.ipynb
+Notebook: src/notebooks/model6_lightgbm_all_features.ipynb
+Kernel: model6-36305357
+Input Notebook:  src/notebooks/model6_lightgbm_all_features.ipynb
+Output Notebook: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model6_executed_20251119-011645.ipynb
+Executing notebook with kernel: model6-36305357
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Using device: cuda
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+MODEL_READY_DIR: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready
+
+✅ Using sklearn IncrementalPCA (memory-efficient)
+✅ Memory utilities imported
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+💾 Memory: 0.60 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+Loading train from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/train_model_ready.parquet
+
+Loading val from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/val_model_ready.parquet
+
+
+📊 Data Summary:
+  Regular features: 54
+  Embedding sent_transformer_: 384 dims
+  Embedding scibert_: 768 dims
+  Embedding specter2_: 768 dims
+
+  Train samples: 960000, Positive: 65808, Negative: 894192
+  Val samples: 120000, Positive: 8075, Negative: 111925
+
+💾 Memory: 32.49 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+
+📊 Applying IncrementalPCA to embedding families...
+  sent_transformer_: 384 dims → 32 components
+  scibert_: 768 dims → 32 components
+  specter2_: 768 dims → 32 components
+
+  Fitting PCA on subset (50000/960000 samples) for sent_transformer_
+
+  Fitting PCA on subset (50000/960000 samples) for scibert_
+
+  Fitting PCA on subset (50000/960000 samples) for specter2_
+
+
+📊 After IncrementalPCA:
+  Train embeddings: (960000, 96)
+  Val embeddings: (120000, 96)
+
+  Combined train: (960000, 150)
+  Combined val: (120000, 150)
+
+💾 Memory: 33.71 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+
+📊 Using RobustScaler (robust to outliers)
+  Fitting scaler on chunks (size=50000) for OOM protection...
+❌ Error in scaling: 'RobustScaler' object has no attribute 'partial_fit'
+⚠️ Continuing without scaling...
+
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+
+📊 Full dataset for CV: (1080000, 150), labels: (1080000,)
+  Positive samples: 73883, Negative: 1006117
+
+🔍 Hyperparameter tuning:
+  Method: RandomizedSearchCV
+  CV folds: 5
+  Random iterations: 50
+
+💾 Memory: 34.92 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+
+================================================================================
+Starting Hyperparameter Tuning
+================================================================================
+Fitting 5 folds for each of 50 candidates, totalling 250 fits
+
+Removed /home/santoshd/.local/share/jupyter/kernels/model6-36305357

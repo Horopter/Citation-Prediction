@@ -1,0 +1,36 @@
+=== DIAGNOSTIC REPORT ===
+Timestamp: 2025-11-16T21:40:20-05:00
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Original directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+
+=== Files in data/results/ ===
+total 2.5G
+drwxrwsr-x 2 santoshd si670f25_class_root  16K Nov 16 21:40 .
+drwxrwsr-x 8 santoshd si670f25_class_root 4.0K Nov 16 10:22 ..
+-rw------- 1 santoshd si670f25_class_root 416K Nov 16 21:39 scibert_X_test.parquet
+-rw------- 1 santoshd si670f25_class_root 902M Nov 16 21:38 scibert_X_train.parquet
+-rw------- 1 santoshd si670f25_class_root 416K Nov 16 21:39 scibert_X_val.parquet
+-rw------- 1 santoshd si670f25_class_root 163M Nov 16 19:04 sent_transformer_X_test.parquet
+-rw------- 1 santoshd si670f25_class_root 1.3G Nov 16 17:55 sent_transformer_X_train.parquet
+-rw------- 1 santoshd si670f25_class_root 163M Nov 16 18:29 sent_transformer_X_val.parquet
+-rw------- 1 santoshd si670f25_class_root 422K Nov 16 21:40 specter2_X_test.parquet
+-rw------- 1 santoshd si670f25_class_root 1.6M Nov 16 21:39 specter2_X_train.parquet
+-rw------- 1 santoshd si670f25_class_root 422K Nov 16 21:40 specter2_X_val.parquet
+-rw------- 1 santoshd si670f25_class_root 5.4M Nov 16 13:40 X_test.parquet
+
+=== Logs directory ===
+total 4.2M
+drwxrwsr-x  2 santoshd si670f25_class_root 4.0K Nov 16 21:40 .
+drwxrwsr-x 16 santoshd si670f25_class_root 4.0K Nov 16 05:08 ..
+-rw-rw-r--  1 santoshd si670f25_class_root 3.7K Nov 16 12:47 data-explore-36084925.err
+-rw-rw-r--  1 santoshd si670f25_class_root 9.8K Nov 16 12:47 data-explore-36084925.out
+-rw-rw-r--  1 santoshd si670f25_class_root 3.7K Nov 16 13:26 data-explore-36086128.err
+-rw-rw-r--  1 santoshd si670f25_class_root  12K Nov 16 13:26 data-explore-36086128.out
+-rw-rw-r--  1 santoshd si670f25_class_root 3.6K Nov 16 21:32 data-explore-36086249.err
+-rw-rw-r--  1 santoshd si670f25_class_root 4.5K Nov 16 13:33 data-explore-36086249.out
+-rw-rw-r--  1 santoshd si670f25_class_root 4.5K Nov 16 21:40 data-explore-36098260.err
+-rw-rw-r--  1 santoshd si670f25_class_root 6.8K Nov 16 21:40 data-explore-36098260.out
+-rw-------  1 santoshd si670f25_class_root 1.3K Nov 16 21:40 diagnostic_report.txt
+-rw-------  1 santoshd si670f25_class_root 1.7K Nov 16 21:40 notebook_execution.log
+-rw-rw-r--  1 santoshd si670f25_class_root 1.6K Nov 15 07:13 pipeline_results.json
+-rw-------  1 santoshd si670f25_class_root  65K Nov 16 21:39 resource_monitor.log

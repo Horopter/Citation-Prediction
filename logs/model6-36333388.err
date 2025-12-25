@@ -1,0 +1,26 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1001.arc-ts.umich.edu
+Date:        2025-11-19T05:44:12-05:00
+SLURM_JOBID: 36333388
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: model6-36333388...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_lightgbm_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model6_executed_20251119-054457.ipynb
+Notebook: src/notebooks/model_lightgbm_all_features.ipynb
+Kernel: model6-36333388
+slurmstepd: error: *** JOB 36333388 ON gl1001 CANCELLED AT 2025-11-19T05:58:11 ***
+/var/spool/slurmd.spool/job36333388/slurm_script: line 1: 3826285 Terminated              papermill "${NOTEBOOK_IN}" "${NOTEBOOK_OUT}" --kernel "${KNAME}" --log-output --execution-timeout 7200 2>&1
+     3826286                       | tee "$LOG_FILE"

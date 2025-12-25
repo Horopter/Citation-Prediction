@@ -1,0 +1,222 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1012.arc-ts.umich.edu
+Date:        2025-11-19T15:04:48-05:00
+SLURM_JOBID: 36364929
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: model_lightgbm-36364929...
+Installed kernelspec model_lightgbm-36364929 in /home/santoshd/.local/share/jupyter/kernels/model_lightgbm-36364929
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_lightgbm_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_lightgbm_executed_20251119-150554.ipynb
+Notebook: src/notebooks/model_lightgbm_all_features.ipynb
+Kernel: model_lightgbm-36364929
+Input Notebook:  src/notebooks/model_lightgbm_all_features.ipynb
+Output Notebook: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_lightgbm_executed_20251119-150554.ipynb
+Executing notebook with kernel: model_lightgbm-36364929
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+
+================================================================================
+MODEL_LIGHTGBM EXECUTION STARTED
+Start Time: 2025-11-19 15:07:04
+================================================================================
+
+
+Using device: cuda
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+MODEL_READY_DIR: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready
+
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+✅ Using sklearn IncrementalPCA (memory-efficient)
+
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+✅ Memory utilities imported from shared module
+💾 Memory: 0.62 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+✅ Enhanced robustness utilities loaded
+✅ Training robustness wrappers loaded
+
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+Ending Cell 11-----------------------------------------
+Executing Cell 12--------------------------------------
+
+================================================================================
+PHASE 1: Data Loading
+================================================================================
+Loading train from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/train_model_ready.parquet
+
+Loading val from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/val_model_ready.parquet
+
+
+📊 Data Summary:
+  Regular features: 54
+  Embedding sent_transformer_: 384 dims
+  Embedding scibert_: 768 dims
+  Embedding specter2_: 768 dims
+  Train samples: 960000, Positive: 65808, Negative: 894192
+  Val samples: 120000, Positive: 8075, Negative: 111925
+
+⏱️  Data Loading Time: 90.02 seconds (1.50 minutes)
+
+💾 Memory: 32.32 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 12-----------------------------------------
+Executing Cell 13--------------------------------------
+Ending Cell 13-----------------------------------------
+Executing Cell 14--------------------------------------
+Ending Cell 14-----------------------------------------
+Executing Cell 15--------------------------------------
+
+================================================================================
+PHASE 2: PCA Preprocessing
+================================================================================
+
+
+📊 Applying IncrementalPCA to embedding families...
+  sent_transformer_: 384 dims → 32 components
+  scibert_: 768 dims → 32 components
+  specter2_: 768 dims → 32 components
+
+  Fitting PCA on subset (288000/960000 samples) for sent_transformer_
+
+  Fitting PCA on subset (288000/960000 samples) for scibert_
+
+  Fitting PCA on subset (288000/960000 samples) for specter2_
+
+✅ Checkpoint saved: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/checkpoints/model_lightgbm_checkpoint_pca.pkl
+
+✅ Checkpoint saved: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/checkpoints/model_lightgbm_checkpoint_pca.pkl
+
+📊 After IncrementalPCA:
+  Train embeddings: (960000, 96)
+  Val embeddings: (120000, 96)
+
+  Combined train: (960000, 150)
+  Combined val: (120000, 150)
+
+⏱️  PCA Preprocessing Time: 367.43 seconds (6.12 minutes)
+
+💾 Memory: 31.24 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 15-----------------------------------------
+Executing Cell 16--------------------------------------
+Ending Cell 16-----------------------------------------
+Executing Cell 17--------------------------------------
+
+================================================================================
+PHASE 3: SMOTETomek Resampling
+================================================================================
+
+📊 Checking class imbalance and applying SMOTETomek resampling...
+  Before: 960000 samples, Positive: 65808, Negative: 894192
+  Imbalance ratio: 13.59:1
+  ⚠️ Large dataset detected (960,000 samples), using sampling_strategy=0.2 for memory efficiency
+  Fitting SMOTETomek...
+
+Timeout waiting for execute reply (7200s).
+Ending Cell 17-----------------------------------------
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/nbclient/client.py", line 782, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+             ^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/jupyter_client/channels.py", line 313, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/papermill", line 7, in <module>
+    sys.exit(papermill())
+             ^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/decorators.py", line 34, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/cli.py", line 235, in papermill
+    execute_notebook(
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/execute.py", line 116, in execute_notebook
+    nb = papermill_engines.execute_notebook_with_engine(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/engines.py", line 48, in execute_notebook_with_engine
+    return self.get_engine(engine_name).execute_notebook(nb, kernel_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/engines.py", line 370, in execute_notebook
+    cls.execute_managed_notebook(nb_man, kernel_name, log_output=log_output, **kwargs)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/engines.py", line 442, in execute_managed_notebook
+    return PapermillNotebookClient(nb_man, **final_kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/clientwrap.py", line 45, in execute
+    self.papermill_execute_cells()
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/clientwrap.py", line 72, in papermill_execute_cells
+    self.execute_cell(cell, index)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/pkgs/arc/python3.11-anaconda/2024.02-1/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/nbclient/client.py", line 1005, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/nbclient/client.py", line 806, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/nbclient/client.py", line 856, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 7200 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['from imblearn.combine import SMOTETomek', '', '# Skip SMOTETomek for very large datasets (>100k samples) - use class_weight instead', 'USE_CLASS_WEIGHT = False  # Will be set based on dataset size', '']
+...
+['    phase_time = time.time() - phase_start', '    print(f"  ⚠️ SMOTETomek failed: {e}")', '    print("  Continuing with original training data...")', '    print(f"\\n⏱️  SMOTETomek Time (failed): {phase_time:.2f} seconds ({phase_time/60:.2f} minutes)")', '    cleanup_memory()']
+-------------------
+
+✗ ERROR: Papermill failed after 7772s!
+Check log file: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/model_lightgbm_all_features_run.log
+Removed /home/santoshd/.local/share/jupyter/kernels/model_lightgbm-36364929

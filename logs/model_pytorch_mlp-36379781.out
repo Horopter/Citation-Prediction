@@ -1,0 +1,295 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1008.arc-ts.umich.edu
+Date:        2025-11-19T19:14:02-05:00
+SLURM_JOBID: 36379781
+Working directory: /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+⚠ WARNING: Could not verify all packages
+Installing Jupyter kernel: model_pytorch_mlp-36379781...
+Installed kernelspec model_pytorch_mlp-36379781 in /home/santoshd/.local/share/jupyter/kernels/model_pytorch_mlp-36379781
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_pytorch_mlp_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_pytorch_mlp_executed_20251119-191454.ipynb
+Notebook: src/notebooks/model_pytorch_mlp_all_features.ipynb
+Kernel: model_pytorch_mlp-36379781
+Input Notebook:  src/notebooks/model_pytorch_mlp_all_features.ipynb
+Output Notebook: /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_pytorch_mlp_executed_20251119-191454.ipynb
+Executing notebook with kernel: model_pytorch_mlp-36379781
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+
+================================================================================
+MODEL_PYTORCH_MLP EXECUTION STARTED
+Start Time: 2025-11-19 19:15:22
+================================================================================
+
+
+Using device: cuda
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+MODEL_READY_DIR: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready
+
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+⚠️ Using fallback memory utilities
+💾 Memory: 0.61 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+✅ Enhanced robustness utilities loaded
+✅ Training robustness wrappers loaded
+
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+
+================================================================================
+PHASE 1: Data Loading
+================================================================================
+Loading train from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/train_model_ready.parquet
+
+Loading val from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/val_model_ready.parquet
+
+
+📊 Data Summary:
+  Regular features: 54
+  Total features: 1974
+  Embedding sent_transformer_: 384 dims (NO PCA)
+  Embedding sent_transformer_: 384 dims
+  Embedding scibert_: 768 dims (NO PCA)
+  Embedding scibert_: 768 dims
+  Embedding specter2_: 768 dims (NO PCA)
+  Embedding specter2_: 768 dims
+  Train samples: 960000, Positive: 65808, Negative: 894192
+  Val samples: 120000, Positive: 8075, Negative: 111925
+
+⏱️  Data Loading Time: 77.18 seconds (1.29 minutes)
+
+💾 Memory: 48.34 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 11-----------------------------------------
+Executing Cell 12--------------------------------------
+Ending Cell 12-----------------------------------------
+Executing Cell 13--------------------------------------
+
+================================================================================
+PHASE 2: Class Imbalance Info (SMOTETomek Skipped)
+================================================================================
+
+📊 Class imbalance statistics:
+  Dataset: 960000 samples
+  Positive: 65808, Negative: 894192
+  Imbalance ratio: 13.59:1
+
+✅ Class imbalance will be handled via:
+  • pos_weight_tensor in BCEWithLogitsLoss
+  • label_smoothing during training
+  • No SMOTETomek resampling (for speed)
+
+💡 Note: SMOTETomek skipped because:
+  • PyTorch MLP uses all 1974 features (no PCA)
+  • SMOTETomek complexity: O(n_features² × n_samples)
+  • Would be ~173x slower than XGBoost/LightGBM (which use PCA)
+  • pos_weight_tensor provides similar benefits without the cost
+
+✅ Using original training data (no resampling)
+
+Ending Cell 13-----------------------------------------
+Executing Cell 14--------------------------------------
+Ending Cell 14-----------------------------------------
+Executing Cell 15--------------------------------------
+
+================================================================================
+PHASE 3: Feature Scaling
+================================================================================
+
+📊 Applying Feature Scaling to combined features...
+
+  Fitting scaler on sample (50000 samples) for OOM protection...
+
+  Transforming train data in chunks (size=50000)...
+
+  Transforming val data in chunks (size=50000)...
+
+  ✅ Scaling complete!
+
+⏱️  Feature Scaling Time: 82.08 seconds (1.37 minutes)
+💾 Memory: 48.52 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 15-----------------------------------------
+Executing Cell 16--------------------------------------
+Ending Cell 16-----------------------------------------
+Executing Cell 17--------------------------------------
+Ending Cell 17-----------------------------------------
+Executing Cell 18--------------------------------------
+Ending Cell 18-----------------------------------------
+Executing Cell 19--------------------------------------
+
+================================================================================
+PHASE 4: Hyperparameter Selection (Fixed Parameters)
+================================================================================
+
+📊 Using improved fixed hyperparameters:
+  Hyperparameters:
+    n_layers: 4
+    hidden_dim_base: 512
+    dim_strategy: decreasing
+    dropout_rate: 0.3
+    activation: swish
+    learning_rate: 0.0005
+    batch_size: 256
+    weight_decay: 0.001
+    use_batch_norm: True
+    use_residual: False
+    label_smoothing: 0.05
+
+🔍 Running quick CV validation with fixed parameters...
+
+⚠️ Dataset too large (1080000 samples), using subset (50000 samples) for CV
+
+  Using 50000 samples for CV validation
+
+
+📊 CV dataset: (50000, 1974), labels: (50000,)
+  Positive samples: 3421, Negative: 46579
+
+  Network architecture: 1974 -> [512, 256, 128, 64] -> 1
+
+  Running 5-fold CV...
+
+Fold 1/5:   0%|          | 0/50 [00:00<?, ?it/s]
+    Fold 1/5: F1 = 0.4096
+
+Fold 2/5:   0%|          | 0/50 [00:00<?, ?it/s]
+    Fold 2/5: F1 = 0.4059
+
+Fold 3/5:   0%|          | 0/50 [00:00<?, ?it/s]
+    Fold 3/5: F1 = 0.4272
+
+Fold 4/5:   0%|          | 0/50 [00:00<?, ?it/s]
+    Fold 4/5: F1 = 0.4168
+
+Fold 5/5:   0%|          | 0/50 [00:00<?, ?it/s]
+    Fold 5/5: F1 = 0.4436
+
+
+✅ CV validation complete
+  Mean CV F1: 0.4206
+  Std CV F1: 0.0136
+💾 Memory: 46.73 GB (RAM) | 0.04/0.05 GB (GPU used/reserved)
+
+Ending Cell 19-----------------------------------------
+Executing Cell 20--------------------------------------
+Ending Cell 20-----------------------------------------
+Executing Cell 21--------------------------------------
+Ending Cell 21-----------------------------------------
+Executing Cell 22--------------------------------------
+
+================================================================================
+PHASE 5: Final Model Training & Threshold Tuning
+================================================================================
+Training Final Model on Full Dataset...
+
+  Training for up to 150 epochs with early stopping (patience=20)...
+  Using class weight: 13.59, label smoothing: 0.05
+
+Training:   0%|          | 0/150 [00:00<?, ?epoch/s]
+
+  Early stopping at epoch 33
+
+
+✅ Final Optimal Threshold: 0.1949
+✅ Final Validation F1: 0.5131
+
+⏱️  Final Model Training & Threshold Tuning Time: 343.87 seconds (5.73 minutes)
+
+📊 Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.9707    0.9457    0.9581    111925
+           1     0.4456    0.6047    0.5131      8075
+
+    accuracy                         0.9228    120000
+   macro avg     0.7081    0.7752    0.7356    120000
+weighted avg     0.9354    0.9228    0.9281    120000
+
+
+💾 Memory: 46.89 GB (RAM) | 7.99/8.01 GB (GPU used/reserved)
+
+Ending Cell 22-----------------------------------------
+Executing Cell 23--------------------------------------
+Ending Cell 23-----------------------------------------
+Executing Cell 24--------------------------------------
+
+💾 Model saved to: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/models/saved_models/model_pytorch_mlp_all_features_best.pkl
+
+Ending Cell 24-----------------------------------------
+Executing Cell 25--------------------------------------
+Ending Cell 25-----------------------------------------
+Executing Cell 26--------------------------------------
+
+================================================================================
+PHASE 6: Test Predictions
+================================================================================
+Generating Test Predictions...
+Loading test from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/test_model_ready.parquet
+
+
+✅ Submission saved to: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/submission_files/submission_model_pytorch_mlp.csv
+  Test predictions: 120000, Positive: 10735, Negative: 109265
+
+⏱️  Test Predictions Time: 17.98 seconds (0.30 minutes)
+
+💾 Memory: 51.82 GB (RAM) | 7.99/8.01 GB (GPU used/reserved)
+
+================================================================================
+
+================================================================================
+MODEL_PYTORCH_MLP EXECUTION COMPLETED
+Start Time: 2025-11-19 19:15:22
+End Time: 2025-11-19 19:27:44
+Total Execution Time: 741.76 seconds (12.36 minutes / 0.21 hours)
+Final Validation F1 Score: 0.5131
+================================================================================
+
+End Time: 2025-11-19 19:27:44
+Final Validation F1 Score: 0.5131
+================================================================================
+
+
+Ending Cell 26-----------------------------------------
+✓ Notebook execution completed in 782s
+Checking for output files...
+✓ Found submission file: submission_model_pytorch_mlp.csv
+✓ Found saved model: model_pytorch_mlp_all_features_best.pkl
+✓ Found execution log: model_pytorch_mlp_all_features_run.log
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 782s
+============================================================
+Removed /home/santoshd/.local/share/jupyter/kernels/model_pytorch_mlp-36379781

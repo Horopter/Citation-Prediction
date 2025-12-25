@@ -1,0 +1,56 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1001.arc-ts.umich.edu
+Date:        2025-11-18T05:20:02-05:00
+SLURM_JOBID: 36186845
+CUDA_HOME:   /sw/pkgs/arc/cuda/12.1.1
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+
+=== GPU Information ===
+Tue Nov 18 05:20:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:3B:00.0 Off |                  Off |
+| N/A   41C    P0             28W /  250W |       1MiB /  16384MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+==========================================
+
+=== Verifying environment ===
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: data-next-steps-36186845...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found base features: X_train.parquet
+✓ Found embedding: sent_transformer
+✓ Found embedding: scibert
+✓ Found embedding: specter2
+✓ Notebook found: src/notebooks/data_exploration_next_steps.ipynb
+✅ Pre-flight validation passed!
+
+Resource monitoring started (PID: 3190609)
+Monitor log: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/resource_monitor.log
+
+=== Killing Previous Notebook Instances ===
+
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-052023.ipynb
+✗ ERROR: Papermill failed after 1138s!
+Check notebook for errors in logs/data-next-steps-*.err
+Check execution logs: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/notebook_execution.log

@@ -1,0 +1,82 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1000.arc-ts.umich.edu
+Date:        2025-11-19T00:51:09-05:00
+SLURM_JOBID: 36303767
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: model6-36303767...
+Installed kernelspec model6-36303767 in /home/santoshd/.local/share/jupyter/kernels/model6-36303767
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model6_lightgbm_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model6_executed_20251119-005234.ipynb
+Notebook: src/notebooks/model6_lightgbm_all_features.ipynb
+Kernel: model6-36303767
+Input Notebook:  src/notebooks/model6_lightgbm_all_features.ipynb
+Output Notebook: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model6_executed_20251119-005234.ipynb
+Executing notebook with kernel: model6-36303767
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Using device: cuda
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+MODEL_READY_DIR: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready
+
+✅ Using sklearn IncrementalPCA (memory-efficient)
+✅ Memory utilities imported
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+💾 Memory: 0.60 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+Loading train from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/train_model_ready.parquet
+
+Loading val from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/val_model_ready.parquet
+
+Kernel died while waiting for execute reply.
+Ending Cell 5------------------------------------------
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/cli.py", line 235, in papermill
+    execute_notebook(
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/execute.py", line 116, in execute_notebook
+    nb = papermill_engines.execute_notebook_with_engine(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/engines.py", line 48, in execute_notebook_with_engine
+    return self.get_engine(engine_name).execute_notebook(nb, kernel_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/engines.py", line 370, in execute_notebook
+    cls.execute_managed_notebook(nb_man, kernel_name, log_output=log_output, **kwargs)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/engines.py", line 442, in execute_managed_notebook
+    return PapermillNotebookClient(nb_man, **final_kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/clientwrap.py", line 45, in execute
+    self.papermill_execute_cells()
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/clientwrap.py", line 72, in papermill_execute_cells
+    self.execute_cell(cell, index)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/pkgs/arc/python3.11-anaconda/2024.02-1/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/nbclient/client.py", line 1009, in async_execute_cell
+    raise DeadKernelError("Kernel died") from None
+nbclient.exceptions.DeadKernelError: Kernel died
+✗ ERROR: Papermill failed after 225s!
+Check log file: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/model6_lightgbm_all_features_run.log
+Removed /home/santoshd/.local/share/jupyter/kernels/model6-36303767

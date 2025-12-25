@@ -1,0 +1,24 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1016.arc-ts.umich.edu
+Date:        2025-11-19T02:09:40-05:00
+SLURM_JOBID: 36310298
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: model6-36310298...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model6_lightgbm_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model6_executed_20251119-021021.ipynb
+Notebook: src/notebooks/model6_lightgbm_all_features.ipynb
+Kernel: model6-36310298
+slurmstepd: error: *** JOB 36310298 ON gl1016 CANCELLED AT 2025-11-19T03:11:54 ***

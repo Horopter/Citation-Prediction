@@ -1,0 +1,26 @@
+{
+  "start_time": 1763208162.3142378,
+  "steps": {
+    "convert_parquet": {
+      "success": true,
+      "duration": 310.18142318725586,
+      "output": "Converting JSONL files from: data/raw\nOutput parquet files to: data/processed\nConverting data/raw/train.jsonl to data/processed/train.parquet...\n  Inferring schema from sample...\n  Inferred schema with 21 columns\n  Processed 50000 lines (50000 rows written)...\n  Processed 100000 lines (100000 rows written)...\n  Processed 150000 lines (150000 rows written)...\n  Processed 200000 lines (200000 rows written)...\n  Processed 250000 lines (250000 rows written)...\n  Processed 300000 lines (300000 rows written)...\n  Processed 350000 lines (350000 rows written)...\n  Processed 400000 lines (400000 rows written)...\n  Processed 450000 lines (450000 rows written)...\n  Processed 500000 lines (500000 rows written)...\n  Processed 550000 lines (550000 rows written)...\n  Processed 600000 lines (600000 rows written)...\n  Processed 650000 lines (650000 rows written)...\n  Processed 700000 lines (700000 rows written)...\n  Processed 750000 lines (750000 rows written)...\n  Processed 800000 lines (800000 rows w"
+    },
+    "download_models": {
+      "success": true,
+      "duration": 0.0006561279296875,
+      "message": "Models already exist"
+    },
+    "data_exploration": {
+      "success": true,
+      "duration": 248.3178038597107
+    },
+    "citation_prediction": {
+      "success": true,
+      "duration": 62.16662096977234,
+      "f1_score": 0.0
+    }
+  },
+  "errors": [],
+  "f1_score": 0.0
+}

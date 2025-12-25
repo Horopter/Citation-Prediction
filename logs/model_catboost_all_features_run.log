@@ -1,0 +1,428 @@
+Input Notebook:  src/notebooks/model_catboost_all_features.ipynb
+Output Notebook: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_catboost_executed_20251119-094405.ipynb
+Executing notebook with kernel: model_catboost-36334191
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+
+================================================================================
+MODEL_CATBOOST EXECUTION STARTED
+Start Time: 2025-11-19 09:44:46
+================================================================================
+
+
+Using device: cuda
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+MODEL_READY_DIR: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready
+
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+✅ Using sklearn IncrementalPCA (memory-efficient)
+
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+✅ Memory utilities imported from shared module
+💾 Memory: 0.63 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+✅ Enhanced robustness utilities loaded
+✅ Training robustness wrappers loaded
+
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+Ending Cell 11-----------------------------------------
+Executing Cell 12--------------------------------------
+
+================================================================================
+PHASE 1: Data Loading
+================================================================================
+Loading train from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/train_model_ready.parquet
+
+Loading val from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/val_model_ready.parquet
+
+
+📊 Data Summary:
+  Regular features: 54
+  Embedding sent_transformer_: 384 dims
+  Embedding scibert_: 768 dims
+  Embedding specter2_: 768 dims
+  Train samples: 960000, Positive: 65808, Negative: 894192
+  Val samples: 120000, Positive: 8075, Negative: 111925
+
+⏱️  Data Loading Time: 62.37 seconds (1.04 minutes)
+
+💾 Memory: 32.78 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 12-----------------------------------------
+Executing Cell 13--------------------------------------
+Ending Cell 13-----------------------------------------
+Executing Cell 14--------------------------------------
+Ending Cell 14-----------------------------------------
+Executing Cell 15--------------------------------------
+
+================================================================================
+PHASE 2: PCA Preprocessing
+================================================================================
+
+
+📊 Applying IncrementalPCA to embedding families...
+  sent_transformer_: 384 dims → 32 components
+  scibert_: 768 dims → 32 components
+  specter2_: 768 dims → 32 components
+
+  Fitting PCA on subset (288000/960000 samples) for sent_transformer_
+
+  Fitting PCA on subset (288000/960000 samples) for scibert_
+
+  Fitting PCA on subset (288000/960000 samples) for specter2_
+
+✅ Checkpoint saved: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/checkpoints/model_catboost_checkpoint_pca.pkl
+
+✅ Checkpoint saved: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/checkpoints/model_catboost_checkpoint_pca.pkl
+
+📊 After IncrementalPCA:
+  Train embeddings: (960000, 96)
+  Val embeddings: (120000, 96)
+
+  Combined train: (960000, 150)
+  Combined val: (120000, 150)
+
+⏱️  PCA Preprocessing Time: 310.17 seconds (5.17 minutes)
+
+💾 Memory: 34.09 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 15-----------------------------------------
+Executing Cell 16--------------------------------------
+Ending Cell 16-----------------------------------------
+Executing Cell 17--------------------------------------
+
+================================================================================
+PHASE 3: SMOTETomek Resampling
+================================================================================
+
+📊 Checking class imbalance and applying SMOTETomek resampling...
+  Before: 960000 samples, Positive: 65808, Negative: 894192
+  Imbalance ratio: 13.59:1
+  ⚠️ Large dataset detected (960,000 samples), using sampling_strategy=0.2 for memory efficiency
+  Fitting SMOTETomek...
+
+  After: 1068602 samples, Positive: 176624, Negative: 891978
+  Balance ratio: 5.05:1
+
+⏱️  SMOTETomek Resampling Time: 1560.78 seconds (26.01 minutes)
+
+Ending Cell 17-----------------------------------------
+Executing Cell 18--------------------------------------
+Ending Cell 18-----------------------------------------
+Executing Cell 19--------------------------------------
+
+================================================================================
+PHASE 4: Feature Scaling
+================================================================================
+
+📊 Applying Feature Scaling to combined features...
+
+  Fitting scaler on sample (50000 samples) for OOM protection...
+
+  Transforming train data in chunks (size=50000)...
+
+  Transforming val data in chunks (size=50000)...
+
+  ✅ Scaling complete!
+
+⏱️  Feature Scaling Time: 7.39 seconds (0.12 minutes)
+💾 Memory: 35.53 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 19-----------------------------------------
+Executing Cell 20--------------------------------------
+Ending Cell 20-----------------------------------------
+Executing Cell 21--------------------------------------
+
+================================================================================
+PHASE 5: Hyperparameter Tuning Setup
+================================================================================
+
+⚠️ Dataset too large (1188602 samples), using subset (25000 samples) for CV
+
+  Using 25000 samples for hyperparameter tuning
+
+📊 Full dataset for CV: (25000, 150), labels: (25000,)
+  Positive samples: 3885, Negative: 21115
+
+🔍 Hyperparameter tuning:
+  Method: RandomizedSearchCV
+  CV folds: 3
+  Random iterations: 10
+
+💾 Memory: 35.44 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 21-----------------------------------------
+Executing Cell 22--------------------------------------
+
+================================================================================
+PHASE 5B: Hyperparameter Tuning
+================================================================================
+Fitting 3 folds for each of 10 candidates, totalling 30 fits
+
+❌ Error in hyperparameter tuning: 
+All the 30 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+12 fits failed with the following error:
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/plain_options_helper.cpp:512: Unknown option {reg_alpha} with value "0.1"
+
+--------------------------------------------------------------------------------
+3 fits failed with the following error:
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/plain_options_helper.cpp:512: Unknown option {reg_alpha} with value "0"
+
+--------------------------------------------------------------------------------
+15 fits failed with the following error:
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/plain_options_helper.cpp:512: Unknown option {reg_alpha} with value "0.5"
+
+⚠️ Using default parameters...
+
+Traceback (most recent call last):
+  File "/tmp/ipykernel_3999110/2364068132.py", line 44, in <module>
+    search.fit(X_full, y_full)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 1051, in fit
+    self._run_search(evaluate_candidates)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 1992, in _run_search
+    evaluate_candidates(
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 1028, in evaluate_candidates
+    _warn_or_raise_about_fit_failures(out, self.error_score)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 505, in _warn_or_raise_about_fit_failures
+    raise ValueError(all_fits_failed_message)
+ValueError: 
+All the 30 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+12 fits failed with the following error:
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/plain_options_helper.cpp:512: Unknown option {reg_alpha} with value "0.1"
+
+--------------------------------------------------------------------------------
+3 fits failed with the following error:
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/plain_options_helper.cpp:512: Unknown option {reg_alpha} with value "0"
+
+--------------------------------------------------------------------------------
+15 fits failed with the following error:
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/catboost/core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/plain_options_helper.cpp:512: Unknown option {reg_alpha} with value "0.5"
+
+
+Ending Cell 22-----------------------------------------
+Executing Cell 23--------------------------------------
+
+================================================================================
+PLOTTING: Cross-Validation Performance Curves
+================================================================================
+⚠️ Skipping CV visualization (best_model or data not available)
+
+Ending Cell 23-----------------------------------------
+Executing Cell 24--------------------------------------
+Ending Cell 24-----------------------------------------
+Executing Cell 25--------------------------------------
+
+================================================================================
+PHASE 6: Final Model Training & Threshold Tuning
+================================================================================
+Training Final Model on Full Dataset...
+  Memory cleaned before final training
+
+
+✅ Final Optimal Threshold: 0.2754
+✅ Final Validation F1: 0.5206
+
+⏱️  Final Model Training & Threshold Tuning Time: 140.45 seconds (2.34 minutes)
+
+📊 Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.9688    0.9544    0.9615    111925
+           1     0.4759    0.5746    0.5206      8075
+
+    accuracy                         0.9288    120000
+   macro avg     0.7224    0.7645    0.7411    120000
+weighted avg     0.9357    0.9288    0.9319    120000
+
+
+💾 Memory: 36.45 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 25-----------------------------------------
+Executing Cell 26--------------------------------------
+
+================================================================================
+PLOTTING: Final Model Performance Visualizations
+================================================================================
+
+<Figure size 1600x1200 with 7 Axes>
+<IPython.core.display.Image object>
+✅ Final performance plots saved to: logs/model_catboost_final_performance.png
+
+Ending Cell 26-----------------------------------------
+Executing Cell 27--------------------------------------
+Ending Cell 27-----------------------------------------
+Executing Cell 28--------------------------------------
+
+💾 Model saved to: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/models/saved_models/model_catboost_all_features_best.pkl
+
+Ending Cell 28-----------------------------------------
+Executing Cell 29--------------------------------------
+Ending Cell 29-----------------------------------------
+Executing Cell 30--------------------------------------
+
+================================================================================
+PHASE 7: Test Predictions
+================================================================================
+Generating Test Predictions...
+Loading test from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/test_model_ready.parquet
+
+✅ Checkpoint saved: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/checkpoints/model_catboost_checkpoint_pca.pkl
+
+  Predicting in chunks (size=10000) for OOM protection...
+
+
+✅ Submission saved to: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/submission_files/submission_model_catboost.csv
+  Test predictions: 120000, Positive: 9727, Negative: 110273
+
+⏱️  Test Predictions Time: 42.65 seconds (0.71 minutes)
+
+💾 Memory: 36.05 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+================================================================================
+
+================================================================================
+MODEL_CATBOOST EXECUTION COMPLETED
+Start Time: 2025-11-19 09:44:46
+End Time: 2025-11-19 10:21:19
+Total Execution Time: 2192.43 seconds (36.54 minutes / 0.61 hours)
+Final Validation F1 Score: 0.5206
+================================================================================
+
+End Time: 2025-11-19 10:21:19
+Final Validation F1 Score: 0.5206
+================================================================================
+
+
+Ending Cell 30-----------------------------------------

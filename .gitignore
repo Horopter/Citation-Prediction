@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook checkpoints (keep notebooks, exclude checkpoints)
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary files only
+*.tmp
+*.temp
+temp_*.json
+
+# Ignore huge original datasets (>2GB)
+data/model_ready/train_model_ready.parquet
+data/results/specter2_X_train.parquet
+data/results/scibert_X_train.parquet
+data/raw/train.jsonl
+
+# Allow the split parts and checksums
+!*.part*
+!*.sha256
+
+# Note: All data files, model files, and large files are tracked via Git LFS
+# Everything else will be synced to remote

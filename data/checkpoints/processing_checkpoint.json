@@ -1,0 +1,80 @@
+{
+  "train": {
+    "embeddings_sent_transformer": {
+      "completed_chunks": 960,
+      "total_chunks": 960,
+      "status": "completed",
+      "timestamp": "2025-11-16 17:52:37.660788"
+    },
+    "embeddings_scibert": {
+      "completed_chunks": 960,
+      "total_chunks": 960,
+      "status": "completed",
+      "timestamp": "2025-11-17 09:46:18.851228"
+    },
+    "feature_extraction": {
+      "completed_chunks": 960,
+      "total_chunks": 960,
+      "status": "completed",
+      "timestamp": "2025-11-17 12:42:07.742126"
+    },
+    "embeddings_specter2": {
+      "completed_chunks": 960,
+      "total_chunks": 960,
+      "status": "completed",
+      "timestamp": "2025-11-18 03:40:42.159476"
+    }
+  },
+  "val": {
+    "embeddings_sent_transformer": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-16 18:29:01.638439"
+    },
+    "feature_extraction": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-17 03:23:40.701355"
+    },
+    "embeddings_scibert": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-17 10:37:55.723407"
+    },
+    "embeddings_specter2": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-18 04:31:06.586234"
+    }
+  },
+  "test": {
+    "embeddings_sent_transformer": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-16 19:03:57.581605"
+    },
+    "feature_extraction": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-17 03:27:03.248811"
+    },
+    "embeddings_scibert": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-17 13:29:46.610916"
+    },
+    "embeddings_specter2": {
+      "completed_chunks": 120,
+      "total_chunks": 120,
+      "status": "completed",
+      "timestamp": "2025-11-18 05:19:30.190272"
+    }
+  }
+}

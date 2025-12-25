@@ -1,0 +1,84 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1002.arc-ts.umich.edu
+Date:        2025-11-17T03:16:35-05:00
+SLURM_JOBID: 36119323
+CUDA_HOME:   /sw/pkgs/arc/cuda/12.1.1
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+
+=== GPU Information ===
+Mon Nov 17 03:16:35 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:D8:00.0 Off |                    0 |
+| N/A   31C    P0             25W /  250W |       1MiB /  16384MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+==========================================
+
+=== Verifying environment ===
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Downloading spaCy model (if needed, max 5 minutes)...
+Collecting en-core-web-sm==3.8.0
+  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl (12.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 74.9 MB/s  0:00:00
+[38;5;2m✔ Download and installation successful[0m
+You can now load the package via spacy.load('en_core_web_sm')
+timeout: the monitored command dumped core
+⚠ spaCy model download failed or timed out (will skip NER features)
+   This is not critical - NER features are optional
+Installing Jupyter kernel: data-explore-36119323...
+Installed kernelspec data-explore-36119323 in /home/santoshd/.local/share/jupyter/kernels/data-explore-36119323
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found data files in data/processed/ directory
+✓ Notebook found: src/notebooks/data_exploration_organized.ipynb
+✓ Models directory found (optional)
+✅ Pre-flight validation passed!
+
+Resource monitoring started (PID: 483195)
+Monitor log: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/resource_monitor.log
+
+=== Killing Previous Notebook Instances ===
+=== Killing Previous Notebook Instances ===
+
+1. Checking for papermill processes...
+  ✓ No papermill processes found
+
+2. Checking for jupyter notebook processes...
+  ✓ No jupyter notebook processes found
+
+3. Checking for jupyter lab processes...
+  ✓ No jupyter lab processes found
+
+4. Checking for ipykernel processes...
+  ✓ No ipykernel processes found
+
+5. Checking for Python processes running notebooks...
+  ✓ No Python notebook processes found
+
+6. Cleaning up stale kernel connections...
+
+✓ No previous notebook instances found - ready for clean execution
+
+=== Cleanup Complete ===
+
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_executed_20251117-031806.ipynb

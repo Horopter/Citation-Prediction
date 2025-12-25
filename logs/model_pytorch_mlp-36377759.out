@@ -1,0 +1,108 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1008.arc-ts.umich.edu
+Date:        2025-11-19T18:46:53-05:00
+SLURM_JOBID: 36377759
+Working directory: /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Basic packages available
+⚠ WARNING: Could not verify all packages
+Installing Jupyter kernel: model_pytorch_mlp-36377759...
+Installed kernelspec model_pytorch_mlp-36377759 in /home/santoshd/.local/share/jupyter/kernels/model_pytorch_mlp-36377759
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_pytorch_mlp_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_pytorch_mlp_executed_20251119-184753.ipynb
+Notebook: src/notebooks/model_pytorch_mlp_all_features.ipynb
+Kernel: model_pytorch_mlp-36377759
+Input Notebook:  src/notebooks/model_pytorch_mlp_all_features.ipynb
+Output Notebook: /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_pytorch_mlp_executed_20251119-184753.ipynb
+Executing notebook with kernel: model_pytorch_mlp-36377759
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+
+================================================================================
+MODEL_PYTORCH_MLP EXECUTION STARTED
+Start Time: 2025-11-19 18:48:24
+================================================================================
+
+
+Using device: cuda
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+PROJECT_ROOT: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+MODEL_READY_DIR: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready
+
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+⚠️ Using fallback memory utilities
+💾 Memory: 0.62 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+✅ Enhanced robustness utilities loaded
+✅ Training robustness wrappers loaded
+
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+
+================================================================================
+PHASE 1: Data Loading
+================================================================================
+Loading train from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/train_model_ready.parquet
+
+Loading val from /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/data/model_ready/val_model_ready.parquet
+
+
+📊 Data Summary:
+  Regular features: 54
+  Total features: 1974
+  Embedding sent_transformer_: 384 dims (NO PCA)
+  Embedding sent_transformer_: 384 dims
+  Embedding scibert_: 768 dims (NO PCA)
+  Embedding scibert_: 768 dims
+  Embedding specter2_: 768 dims (NO PCA)
+  Embedding specter2_: 768 dims
+  Train samples: 960000, Positive: 65808, Negative: 894192
+  Val samples: 120000, Positive: 8075, Negative: 111925
+
+⏱️  Data Loading Time: 92.85 seconds (1.55 minutes)
+
+💾 Memory: 48.62 GB (RAM) | 0.00/0.00 GB (GPU used/reserved)
+
+Ending Cell 11-----------------------------------------
+Executing Cell 12--------------------------------------
+Ending Cell 12-----------------------------------------
+Executing Cell 13--------------------------------------
+
+================================================================================
+PHASE 2: SMOTETomek Resampling
+================================================================================
+
+📊 Checking class imbalance and applying SMOTETomek resampling...
+  Before: 960000 samples, Positive: 65808, Negative: 894192
+  Imbalance ratio: 13.59:1
+  ⚠️ Large dataset detected (960,000 samples), using sampling_strategy=0.2 for memory efficiency
+  Fitting SMOTETomek...
+
+Removed /home/santoshd/.local/share/jupyter/kernels/model_pytorch_mlp-36377759

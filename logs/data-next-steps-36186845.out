@@ -1,0 +1,132 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1001.arc-ts.umich.edu
+Date:        2025-11-18T05:20:02-05:00
+SLURM_JOBID: 36186845
+CUDA_HOME:   /sw/pkgs/arc/cuda/12.1.1
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+
+=== GPU Information ===
+Tue Nov 18 05:20:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:3B:00.0 Off |                  Off |
+| N/A   41C    P0             28W /  250W |       1MiB /  16384MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+==========================================
+
+=== Verifying environment ===
+Verifying Python environment...
+✓ Basic packages available
+✓ Python environment verified
+Installing Jupyter kernel: data-next-steps-36186845...
+Installed kernelspec data-next-steps-36186845 in /home/santoshd/.local/share/jupyter/kernels/data-next-steps-36186845
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found base features: X_train.parquet
+✓ Found embedding: sent_transformer
+✓ Found embedding: scibert
+✓ Found embedding: specter2
+✓ Notebook found: src/notebooks/data_exploration_next_steps.ipynb
+✅ Pre-flight validation passed!
+
+Resource monitoring started (PID: 3190609)
+Monitor log: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/resource_monitor.log
+
+=== Killing Previous Notebook Instances ===
+=== Killing Previous Notebook Instances ===
+
+1. Checking for papermill processes...
+  ✓ No papermill processes found
+
+2. Checking for jupyter notebook processes...
+  ✓ No jupyter notebook processes found
+
+3. Checking for jupyter lab processes...
+  Found jupyter lab processes:
+    - Killing PID 3100081 (bash)
+    - Killing PID 3100134 (jupyter-lab)
+    - Force killing PID 3100081
+    - Force killing PID 3100134
+
+4. Checking for ipykernel processes...
+  Found ipykernel processes:
+    - Killing PID 3100707 (python)
+    - Killing PID 3102749 (python)
+    - Force killing PID 3100707
+    - Force killing PID 3102749
+
+5. Checking for Python processes running notebooks...
+  ✓ No Python notebook processes found
+
+6. Cleaning up stale kernel connections...
+
+✓ Killed 4 previous notebook instance(s)
+  Waiting 3 seconds for cleanup...
+
+=== Cleanup Complete ===
+
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-052023.ipynb
+Input Notebook:  src/notebooks/data_exploration_next_steps.ipynb
+Output Notebook: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/data_exploration_next_steps_executed_20251118-052023.ipynb
+Executing:   0%|          | 0/18 [00:00<?, ?cell/s]Executing notebook with kernel: data-next-steps-36186845
+Executing:   6%|▌         | 1/18 [00:03<01:02,  3.69s/cell]Executing:  17%|█▋        | 3/18 [00:36<03:18, 13.24s/cell]Executing:  28%|██▊       | 5/18 [00:40<01:36,  7.46s/cell]Executing:  39%|███▉      | 7/18 [01:44<03:16, 17.88s/cell]Executing:  50%|█████     | 9/18 [01:47<01:43, 11.54s/cell]Executing:  61%|██████    | 11/18 [02:10<01:21, 11.60s/cell]Executing:  72%|███████▏  | 13/18 [18:47<14:29, 173.90s/cell]Executing:  72%|███████▏  | 13/18 [18:53<07:15, 87.18s/cell] 
+Traceback (most recent call last):
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/papermill", line 7, in <module>
+    sys.exit(papermill())
+             ^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/click/decorators.py", line 34, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/cli.py", line 235, in papermill
+    execute_notebook(
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/execute.py", line 131, in execute_notebook
+    raise_for_execution_errors(nb, output_path)
+  File "/gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/lib/python3.11/site-packages/papermill/execute.py", line 251, in raise_for_execution_errors
+    raise error
+papermill.exceptions.PapermillExecutionError: 
+---------------------------------------------------------------------------
+Exception encountered at "In [6]":
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[6], line 141
+    139 with warnings.catch_warnings():
+    140     warnings.filterwarnings('ignore', category=RuntimeWarning)
+--> 141     warnings.filterwarnings('ignore', message='.*constant.*', flags=re.IGNORECASE)
+    142     warnings.filterwarnings('ignore', message='.*F statistic.*', flags=re.IGNORECASE)
+    143     for col in numeric_feature_cols:
+
+TypeError: filterwarnings() got an unexpected keyword argument 'flags'
+
+✗ ERROR: Papermill failed after 1138s!
+Check notebook for errors in logs/data-next-steps-*.err
+Check execution logs: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/notebook_execution.log

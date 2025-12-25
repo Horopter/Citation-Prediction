@@ -1,0 +1,30 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1012.arc-ts.umich.edu
+Date:        2025-11-18T16:58:38-05:00
+SLURM_JOBID: 36263698
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: model3-36263698...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model3_reg_plus_one_embedding_pca_mlp.ipynb
+✅ Pre-flight validation passed!
+=== Killing Previous Notebook Instances ===
+✓ Cleanup attempted
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model3_executed_20251118-165909.ipynb
+✓ Notebook execution completed in 3521s
+Checking for submission file...
+✓ Found submission file: submission_model3.csv
+
+============================================================
+EXECUTION SUMMARY
+============================================================
+Notebook execution time: 3521s
+============================================================

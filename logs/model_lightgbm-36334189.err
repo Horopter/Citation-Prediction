@@ -1,0 +1,25 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1001.arc-ts.umich.edu
+Date:        2025-11-19T05:58:22-05:00
+SLURM_JOBID: 36334189
+Working directory: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+✓ Python environment verified
+Installing Jupyter kernel: model_lightgbm-36334189...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_lightgbm_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_lightgbm_executed_20251119-055855.ipynb
+Notebook: src/notebooks/model_lightgbm_all_features.ipynb
+Kernel: model_lightgbm-36334189
+✗ ERROR: Papermill failed after 9226s!
+Check log file: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/logs/model_lightgbm_all_features_run.log

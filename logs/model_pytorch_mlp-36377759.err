@@ -1,0 +1,27 @@
+Activating virtual environment: /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv
+==========================================
+JOB STARTUP INFORMATION
+==========================================
+Host:        gl1008.arc-ts.umich.edu
+Date:        2025-11-19T18:46:53-05:00
+SLURM_JOBID: 36377759
+Working directory: /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2
+Python:      /gpfs/accounts/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/venv/bin/python
+==========================================
+Verifying Python environment...
+/var/spool/slurmd.spool/job36377759/slurm_script: line 97: 130114 Aborted                 (core dumped) python -c "import sys; import papermill; import ipykernel; import torch; import polars; import sklearn; print('✓ Basic packages available', flush=True)" 2> /dev/null
+⚠ WARNING: Could not verify all packages
+Installing Jupyter kernel: model_pytorch_mlp-36377759...
+✓ Kernel installed successfully
+Running pre-flight validation...
+✓ Found model-ready files
+✓ Notebook found: src/notebooks/model_pytorch_mlp_all_features.ipynb
+✅ Pre-flight validation passed!
+=== Cleaning Previous Runs ===
+✓ Cleanup completed
+Running papermill -> /scratch/si670f25_class_root/si670f25_class/santoshd/Kaggle_2/runs/model_pytorch_mlp_executed_20251119-184753.ipynb
+Notebook: src/notebooks/model_pytorch_mlp_all_features.ipynb
+Kernel: model_pytorch_mlp-36377759
+slurmstepd: error: *** JOB 36377759 ON gl1008 CANCELLED AT 2025-11-19T19:13:37 ***
+/var/spool/slurmd.spool/job36377759/slurm_script: line 1: 130383 Terminated              papermill "${NOTEBOOK_IN}" "${NOTEBOOK_OUT}" --kernel "${KNAME}" --log-output --execution-timeout 7200 2>&1
+     130384                       | tee "$LOG_FILE"
