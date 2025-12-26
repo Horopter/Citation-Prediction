@@ -15,3 +15,26 @@
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
 *.rar filter=lfs diff=lfs merge=lfs -text
 *.part* filter=lfs diff=lfs merge=lfs -text
+data/processed/val.parquet filter=lfs diff=lfs merge=lfs -text
+models/sentence-transformers_all-MiniLM-L6-v2/model.safetensors filter=lfs diff=lfs merge=lfs -text
+data/model_ready/test_model_ready.parquet filter=lfs diff=lfs merge=lfs -text
+data/raw/test.no_label.jsonl filter=lfs diff=lfs merge=lfs -text
+data/raw/val.jsonl filter=lfs diff=lfs merge=lfs -text
+models/allenai_scibert_scivocab_uncased/model.safetensors filter=lfs diff=lfs merge=lfs -text
+venv/lib/python3.13/site-packages/_polars_runtime_32/_polars_runtime_32.abi3.so filter=lfs diff=lfs merge=lfs -text
+venv/lib/python3.13/site-packages/torch/lib/libtorch_cpu.dylib filter=lfs diff=lfs merge=lfs -text
+data/model_ready/train_model_ready.parquet filter=lfs diff=lfs merge=lfs -text
+data/model_ready/val_model_ready.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/specter2_X_val.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/scibert_X_val.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/specter2_X_train.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/sent_transformer_X_train.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/scibert_X_test.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/sent_transformer_X_test.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/scibert_X_train.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/specter2_X_test.parquet filter=lfs diff=lfs merge=lfs -text
+data/results/sent_transformer_X_val.parquet filter=lfs diff=lfs merge=lfs -text
+data/processed/train.parquet filter=lfs diff=lfs merge=lfs -text
+data/processed/test.parquet filter=lfs diff=lfs merge=lfs -text
+data/raw/train.jsonl filter=lfs diff=lfs merge=lfs -text
+

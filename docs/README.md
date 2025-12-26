@@ -1,5 +1,9 @@
 # Kaggle Dataset: f-25-si-670-kaggle-2
 
+<p align="center">
+  <img src="../Predicting%20Paper%20Impact.png" alt="Citation Prediction Project logo" width="260">
+</p>
+
 ## Dataset Overview
 
 This dataset contains academic papers from OpenAlex in JSONL format. The task appears to be a binary classification problem.
@@ -91,4 +95,3 @@ def load_jsonl(filepath):
 # Load training data
 train_data = load_jsonl('train.jsonl')
 ```
-

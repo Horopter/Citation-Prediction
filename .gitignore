@@ -57,3 +57,4 @@ data/raw/train.jsonl
 
 # Note: All data files, model files, and large files are tracked via Git LFS
 # Everything else will be synced to remote
+venv/

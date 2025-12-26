@@ -1,45 +1,61 @@
 # Citation Prediction Project
 
-A comprehensive machine learning pipeline for binary classification of academic papers using ensemble methods and state-of-the-art text embeddings.
+<p align="center">
+  <img src="Predicting%20Paper%20Impact.png" alt="Citation Prediction Project logo" width="320">
+</p>
+
+A machine learning pipeline for binary citation prediction (paper impact) using tabular features, transformer embeddings, and ensemble models.
 
 **Competition**: [Kaggle F-25 SI-670 Kaggle 2](https://www.kaggle.com/competitions/f-25-si-670-kaggle-2)
 
 **Repository**: [Citation-Prediction](https://github.com/horopter/Citation-Prediction) (GitHub)
 
-**Note**: This repository uses Git LFS (Large File Storage) for large files including data files (.parquet), model files (.pkl, .npy), and embedding models. All files are synced to the remote repository.
+**Note**: This repository uses Git LFS (Large File Storage) for large artifacts (data, models, embeddings). After cloning, run `git lfs install` and `git lfs pull` to fetch them. For packaging and large file handling, see `ZIP_INSTRUCTIONS.md` and `file_manager.py`.
 
 ## Overview
 
-This project implements a multi-model ensemble approach for predicting citations in academic papers. It combines traditional feature engineering with pre-trained text embeddings (SciBERT, SPECTER2, Sentence Transformers) and uses multiple model architectures (XGBoost, LightGBM, CatBoost, MLP) with a weighted ensemble strategy.
+This project covers end-to-end ETL (JSONL to Parquet), feature extraction, embedding generation, model training, and ensemble inference for a Kaggle-style binary classification task. The ensemble uses saved model checkpoints in `models/saved_models/` and produces a Kaggle submission CSV via `src/scripts/ensemble_predict.py`.
 
 ## Key Features
 
-- **Multi-Model Ensemble**: Combines 5 different model architectures
-- **Advanced Feature Engineering**: 54 regular features + 1,920 embedding dimensions
-- **Class Imbalance Handling**: SMOTETomek resampling
-- **Robust Evaluation**: 5-fold cross-validation with hyperparameter tuning
-- **Production-Ready**: OOM-resistant design with chunked processing
-- **GreatLakes Compatible**: SLURM scripts for cluster deployment
+- **Multi-Model Ensemble**: XGBoost, LightGBM, CatBoost, PyTorch MLP (optional sklearn MLP)
+- **Advanced Feature Engineering**: 56 base features (54 numeric + 2 categorical) plus 1,920 embedding dimensions
+- **Class Imbalance Handling**: SMOTETomek for tree models; class-weighted loss for PyTorch MLP
+- **Robust Evaluation**: 5-fold CV and hyperparameter search for tree models; fixed-parameter CV validation for PyTorch; threshold optimization
+- **Production-Ready**: Chunked processing, checkpointing, and aggressive memory cleanup
+- **GreatLakes/SLURM Ready**: `src/scripts/run_*.sh` sbatch scripts for ETL and training
+- **Branding Assets**: `Predicting Paper Impact.png` (primary) and `Predicting Paper Impact Square.png` (avatar/social)
 
 ## Quick Start
 
 ### Prerequisites
 
+- Python 3.8+
+- Git LFS
+- CUDA (optional, for GPU acceleration)
+
 ```bash
-# Install dependencies
+git lfs install
+git lfs pull
 pip install -r requirements.txt
 ```
 
 ### Data Preparation
 
-1. Place raw JSONL files in `data/raw/`:
+1. If raw JSONL files are not already present, place them in `data/raw/`:
    - `train.jsonl`
    - `val.jsonl`
    - `test.no_label.jsonl`
 
-2. Convert to Parquet format:
+2. Convert to Parquet format (skip if already present):
    ```bash
    python3 src/scripts/convert_to_parquet.py
+   ```
+
+3. Build feature and embedding outputs (skip if already present):
+   ```bash
+   jupyter notebook src/notebooks/data_exploration_organized.ipynb
+   jupyter notebook src/notebooks/data_exploration_next_steps.ipynb
    ```
 
 ### Model Training
@@ -56,9 +72,16 @@ jupyter notebook src/notebooks/model_lightgbm_all_features.ipynb
 # CatBoost
 jupyter notebook src/notebooks/model_catboost_all_features.ipynb
 
+# sklearn MLP (optional)
+jupyter notebook src/notebooks/model_mlp_all_features.ipynb
+
 # PyTorch MLP
 jupyter notebook src/notebooks/model_pytorch_mlp_all_features.ipynb
 ```
+
+Optional/experimental notebooks (not part of the default ensemble):
+- `src/notebooks/model_randomforest_all_features.ipynb`
+- `src/notebooks/model_multi_classifier_leakage_test.ipynb`
 
 ### Ensemble Prediction
 
@@ -107,6 +130,7 @@ This will:
    ```
 
 3. **Try Different Ensemble Methods**
+   - Weighted Mean (default): `python3 src/scripts/ensemble_predict.py --method weighted_mean`
    - Majority Voting: `python3 src/scripts/ensemble_predict.py --method vote`
    - Geometric Mean: `python3 src/scripts/ensemble_predict.py --method geometric_mean`
    - Simple Average: `python3 src/scripts/ensemble_predict.py --method mean`
@@ -127,6 +151,10 @@ This will:
    
    # Use probability mean to break ties
    python3 src/scripts/ensemble_predict.py --tie-breaker prob_mean
+
+   # Round 0.5 up or down on ties
+   python3 src/scripts/ensemble_predict.py --tie-breaker round_up
+   python3 src/scripts/ensemble_predict.py --tie-breaker round_down
    ```
 
 6. **Use GPU for PyTorch Models**
@@ -162,6 +190,8 @@ This will:
                           - conservative: Predict negative (default)
                           - aggressive: Predict positive
                           - prob_mean: Use probability mean
+                          - round_up: Round 0.5 up
+                          - round_down: Round 0.5 down
 
 --device DEVICE           Device for PyTorch models (cpu or cuda)
                           Default: cpu
@@ -177,13 +207,21 @@ The script generates a CSV file with two columns:
 - **Error: "No model files found"**: Ensure model files are in `models/saved_models/` with naming pattern `model_*_all_features_best.pkl`
 - **Error: "PyTorch not available"**: Install `torch` or skip PyTorch models
 - **Error: "Feature mismatch"**: Models were trained with different preprocessing pipelines
+- **Missing LFS assets**: Run `git lfs pull`
 
-### GreatLakes Cluster Deployment
+### GreatLakes / SLURM Deployment
 
 ```bash
-# Submit ensemble job
-sbatch run_ensemble_greatlakes.sh
+# Submit notebook/model jobs
+sbatch src/scripts/run_data_exploration_organized.sh
+sbatch src/scripts/run_data_exploration_next_steps.sh
+sbatch src/scripts/run_model_xgboost.sh
+sbatch src/scripts/run_model_lightgbm.sh
+sbatch src/scripts/run_model_catboost.sh
+sbatch src/scripts/run_model_pytorch_mlp.sh
 ```
+
+Update the SLURM headers (account, email, partition, time) as needed for your cluster.
 
 ## ETL Pipeline
 
@@ -214,7 +252,7 @@ flowchart TD
     F --> F3[Data Cleaning]
 ```
 
-### Stage 1: Data Ingestion (JSONL → Parquet)
+### Stage 1: Data Ingestion (JSONL to Parquet)
 
 **Script**: `src/scripts/convert_to_parquet.py`
 
@@ -248,7 +286,7 @@ python3 src/scripts/convert_to_parquet.py
 4. Writes each chunk to Parquet format
 5. Combines chunks into final Parquet file
 
-### Stage 2: Feature Extraction & Embedding Generation
+### Stage 2: Feature Extraction and Embedding Generation
 
 **Notebook**: `src/notebooks/data_exploration_organized.ipynb`
 
@@ -272,7 +310,7 @@ python3 src/scripts/convert_to_parquet.py
 - **Memory Management**: Aggressive cleanup between operations
 - **Batch Processing**: Efficient batching for embedding generation
 
-**Feature Extraction** (54+ structured features):
+**Feature Extraction** (56 base features: 54 numeric + 2 categorical):
 - **Temporal Features**: Publication dates, update dates, days since publication
 - **Statistical Features**: Counts, averages, distributions
 - **Text Features**: Title length, abstract length, keyword counts
@@ -313,7 +351,7 @@ flowchart LR
 - Aggressive garbage collection between operations
 - Checkpoint system allows resuming from failures
 
-### Stage 3: Feature Merging & Model-Ready Preparation
+### Stage 3: Feature Merging and Model-Ready Preparation
 
 **Notebook**: `src/notebooks/data_exploration_next_steps.ipynb`
 
@@ -328,6 +366,12 @@ flowchart LR
 - `data/model_ready/train_model_ready.parquet`
 - `data/model_ready/val_model_ready.parquet`
 - `data/model_ready/test_model_ready.parquet`
+- `data/model_ready/feature_label_correlations.csv`
+- `data/model_ready/categorical_chi2_cramersv.csv`
+- `data/model_ready/anova_numeric_features_vs_label.csv`
+- `data/model_ready/tukey_hsd_top_features.csv`
+- `data/model_ready/missingness_report.csv`
+- `data/model_ready/imputation_spec.json`
 
 **Processing Steps**:
 
@@ -349,7 +393,7 @@ flowchart LR
 4. **Statistical Analysis**
    - **Correlation Analysis**: Pearson and Spearman correlations
    - **Chi-square Tests**: For categorical features
-   - **Cramér's V**: Measure of association for categorical variables
+   - **Cramer's V**: Measure of association for categorical variables
    - **ANOVA**: Analysis of variance for continuous features
    - **Tukey's HSD**: Post-hoc analysis for significant differences
 
@@ -359,12 +403,11 @@ flowchart LR
    - Ensures no data leakage between splits
 
 **Final Feature Set**:
-- **Base Features**: 54 regular features (preserved)
-- **Embedding Features**: 
-  - Sentence Transformer: 384 dimensions
-  - SciBERT: 768 dimensions
-  - SPECTER2: 768 dimensions
-- **Total**: ~1,974 features (54 + 1,920 embedding dimensions)
+- **Base Features**: 56 total (54 numeric + 2 categorical)
+- **Embedding Features**: 1,920 numeric dimensions
+- **Total Numeric Features**: 1,974 (54 base + 1,920 embeddings)
+- **Categorical Features**: 2
+- **Additional Columns**: `id` (and `label` in train/val)
 
 **Data Flow**:
 ```mermaid
@@ -395,8 +438,8 @@ Throughout the ETL pipeline, several strategies ensure efficient memory usage:
 | Stage | Input | Output | Key Operations |
 |-------|-------|--------|----------------|
 | **1. Ingestion** | JSONL files | Parquet files | Chunked reading, schema inference, type coercion |
-| **2. Feature Extraction** | Parquet files | Base features + Embeddings | Feature engineering, transformer embeddings, checkpointing |
-| **3. Merging** | Base features + Embeddings | Model-ready Parquet | Feature merging, imputation, statistical analysis |
+| **2. Feature Extraction** | Parquet files | Base features (56) + embeddings | Feature engineering, transformer embeddings, checkpointing |
+| **3. Merging** | Base features + embeddings | Model-ready Parquet | Feature merging, imputation, statistical analysis |
 
 ### Pipeline Execution Order
 
@@ -409,8 +452,8 @@ Throughout the ETL pipeline, several strategies ensure efficient memory usage:
 
 After each stage, validate outputs:
 - **Stage 1**: Check Parquet file sizes and record counts match JSONL files
-- **Stage 2**: Verify feature counts (54 base features) and embedding dimensions
-- **Stage 3**: Confirm final feature count (~1,974) and data consistency
+- **Stage 2**: Verify base feature count (56) and embedding dimensions
+- **Stage 3**: Confirm 1,974 numeric features plus 2 categorical features and data consistency
 
 ### Troubleshooting
 
@@ -423,15 +466,26 @@ After each stage, validate outputs:
 
 ```
 Kaggle2/
+├── Predicting Paper Impact.png
+├── Predicting Paper Impact Square.png
+├── README.md
+├── ZIP_INSTRUCTIONS.md
+├── file_manager.py
+├── complete_sync.sh
 ├── data/                    # Data directory
-│   ├── raw/                 # Input JSONL files
-│   ├── processed/           # Processed parquet files
+│   ├── checkpoints/         # Checkpointed intermediate outputs
 │   ├── model_ready/         # Feature-engineered data
+│   ├── nltk_data/           # NLTK resources
+│   ├── processed/           # Processed parquet files
+│   ├── raw/                 # Input JSONL files
 │   ├── results/             # Intermediate results (embeddings, features)
-│   └── submission_files/    # Model predictions
+│   ├── submission_files/    # Model predictions
+│   └── temp/                # Scratch space
 ├── models/                  # Model files
-│   ├── saved_models/       # Trained model checkpoints
-│   └── [embedding models]/  # Pre-trained embedding models
+│   ├── saved_models/        # Trained model checkpoints
+│   ├── allenai_scibert_scivocab_uncased/  # SciBERT weights
+│   ├── allenai_specter2/    # SPECTER2 weights
+│   └── sentence-transformers_all-MiniLM-L6-v2/  # Sentence Transformer
 ├── src/                     # Source code
 │   ├── notebooks/           # Training notebooks
 │   ├── experimental/        # Experimental model notebooks
@@ -442,8 +496,7 @@ Kaggle2/
 ├── metrics/                 # Performance metrics
 ├── runs/                    # Executed notebook outputs
 ├── catboost_info/           # CatBoost training logs
-├── src/scripts/              # Python and shell scripts
-│   └── ensemble_predict.py  # Ensemble prediction script
+├── venv/                    # Local virtual environment (optional)
 └── requirements.txt         # Python dependencies
 ```
 
@@ -452,37 +505,39 @@ See [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) for detailed structur
 ## Modeling Approach
 
 The project uses a unified preprocessing pipeline with:
-- **Feature Engineering**: 54 regular features + embeddings from 3 pre-trained models
-- **Preprocessing**: PCA compression (for tree models), StandardScaler, SMOTETomek
-- **Training**: 5-fold CV, hyperparameter tuning, threshold optimization
+- **Feature Engineering**: 56 base features (54 numeric + 2 categorical) plus 3 embedding families
+- **Preprocessing**: PCA compression for embeddings in tree models, StandardScaler, SMOTETomek
+- **Training**: 5-fold CV and hyperparameter tuning for tree models; fixed-parameter CV validation for PyTorch; threshold optimization
 - **Ensemble**: Weighted averaging based on validation F1 scores
 
 ### Detailed Modeling Approach
 
-**Regular Features:** 54 numeric features extracted from the raw data, including statistical and domain-specific attributes.
+**Base Features:** 54 numeric features plus 2 categorical features extracted from the raw data, including statistical and domain-specific attributes.
 
-**Embedding Families:** Three pre-trained embedding models were used to capture semantic information:
+**Embedding Families:** Three pre-trained embedding models capture semantic information:
 - **Sentence Transformers** (`all-MiniLM-L6-v2`): 384-dimensional embeddings
-- **SciBERT** (`allenai/scibert_scivocab_uncased`): 768-dimensional embeddings  
+- **SciBERT** (`allenai/scibert_scivocab_uncased`): 768-dimensional embeddings
 - **SPECTER2** (`allenai/specter2`): 768-dimensional embeddings
 
-**Feature Combination:** Regular features were concatenated with embeddings, resulting in ~1,974 total features (54 regular + 1,920 embedding dimensions).
+**Feature Combination:** The model-ready dataset contains 1,974 numeric features (54 base + 1,920 embeddings) plus 2 categorical columns. The `id` column is retained for joins and submission generation.
 
 **Preprocessing Pipeline:**
-1. **PCA Compression** (for tree-based models): Applied IncrementalPCA to each embedding family, reducing dimensions to 32 components per family to improve computational efficiency while preserving information.
-2. **Feature Scaling:** StandardScaler normalization applied to all features to ensure consistent scale across different feature types.
-3. **Class Imbalance Handling:** SMOTETomek resampling used to address severe class imbalance (~13:1 negative-to-positive ratio), balancing the dataset to ~2.5:1 ratio.
-4. **Memory Management:** Chunked processing and aggressive garbage collection implemented throughout to handle large-scale data efficiently and prevent out-of-memory errors.
+1. **PCA Compression** (tree models): IncrementalPCA reduces each embedding family to 32 components for efficiency.
+2. **Feature Scaling**: StandardScaler normalization applied to numeric features.
+3. **Categorical Handling**: Categorical columns are encoded in the training notebooks per model.
+4. **Class Imbalance Handling**: SMOTETomek resampling for tree models; class-weighted loss for PyTorch MLP.
+5. **Memory Management**: Chunked processing and aggressive garbage collection to avoid OOM failures.
 
 **Training Strategy:**
-- **Cross-Validation:** 5-fold stratified cross-validation for robust performance estimation
-- **Hyperparameter Tuning:** RandomizedSearchCV/GridSearchCV with comprehensive parameter grids
-- **Threshold Optimization:** Fine-grained threshold search (120+ thresholds) using precision-recall curves to maximize F1 score
-- **Model Calibration:** Isotonic calibration applied to improve probability calibration
-- **Early Stopping:** Implemented for gradient boosting models to prevent overfitting
+- **Cross-Validation**: 5-fold stratified CV for tree models
+- **Hyperparameter Tuning**: RandomizedSearchCV/GridSearchCV for tree models
+- **PyTorch Validation**: Fixed hyperparameters with CV validation (subset for large datasets)
+- **Threshold Optimization**: Fine-grained threshold search using precision-recall curves
+- **Model Calibration**: Isotonic calibration for tree models where applicable
+- **Early Stopping**: Implemented for gradient boosting models
 
 **Ensemble Strategy:**
-- **Weighted Ensemble:** Final predictions combine all models using performance-weighted averaging, where weights are proportional to each model's validation F1 score squared.
+- **Weighted Ensemble**: Weights are derived from each model's best F1 (or best CV score) squared.
 - **Ensemble Methods Available:**
   - **Weighted Mean** (default): Performance-weighted average of probabilities
   - **Geometric Mean**: Geometric mean of probabilities
@@ -493,24 +548,30 @@ See [docs/MODELING_APPROACH.md](docs/MODELING_APPROACH.md) for even more compreh
 
 ## Documentation
 
-- [Dataset Information](data/README.md) - Kaggle dataset details
+- [Dataset Information](docs/README.md) - Kaggle dataset details
 - [Project Structure](docs/PROJECT_STRUCTURE.md) - Folder organization and data flow
 - [Modeling Approach](docs/MODELING_APPROACH.md) - Comprehensive technical approach
 - [Model Comparison Report](docs/MODEL_COMPARISON_REPORT.md) - Detailed comparison of XGBoost, CatBoost, and LightGBM
 - [Notebook Workflow](docs/NOTEBOOK_WORKFLOW.md) - Complete pipeline flow and notebook purposes
-- [Feature Comparisons](docs/) - Detailed feature set comparisons
+- [Packaging and Large Files](ZIP_INSTRUCTIONS.md) - Safe archive creation guidance
 
 ## Models Trained
 
+Primary models used in the default ensemble:
 1. **XGBoost** - Gradient boosting with tree-based learning
 2. **LightGBM** - Optimized gradient boosting
 3. **CatBoost** - Gradient boosting with categorical handling
-4. **sklearn MLP** - Multi-layer perceptron neural network
-5. **PyTorch MLP** - Deep neural network with batch normalization
+4. **PyTorch MLP** - Deep neural network with batch normalization
+
+Optional/experimental models:
+- **sklearn MLP** - Multi-layer perceptron neural network
+- **RandomForest** - Baseline tree ensemble
+- **Leakage test baselines** - Models saved as `model_*_leakage_test.pkl`
 
 ## Requirements
 
 - Python 3.8+
+- Git LFS (required for data/models)
 - See `requirements.txt` for full dependency list
 - PyTorch (for PyTorch MLP model)
 - CUDA (optional, for GPU acceleration)
@@ -522,4 +583,3 @@ This project is for academic/educational purposes.
 ## Author
 
 Citation Prediction Project - SI 670 F25
-
